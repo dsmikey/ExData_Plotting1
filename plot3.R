@@ -14,16 +14,19 @@ plot_omit <- na.omit(epc2007)
 #plot_omitall <- na.omit(subset(epc2007,select=c(Global_active_power)))
 
 
-# plot1.R produce plot1.png file
+# plot3.R produce plot3.png file
 
-png("plot1.png",width=480,height=480,units="px", pointsize=12, bg = "transparent")
-
+png("plot3.png",width=480,height=480,units="px", pointsize=12, bg = "transparent")
 #par(mfrow=c(1,1))
-#par(oma=c(4,2,0,0))
+#par(mar=c(5.1,4.1,4.1,2.1))
 
-hist(plot_omit$Global_active_power, col="red",  main="Global Active Power", xlab="Global Active Power (kilowatts)" )
+
+with(plot_omit, plot(datetime, Sub_metering_1, type="n", xlab="", ylab="Energy sub metering"))
+with(plot_omit, lines(datetime, Sub_metering_1, type="l"))
+with(plot_omit, lines(datetime, Sub_metering_2, type="l",col="red"))
+with(plot_omit, lines(datetime, Sub_metering_3, type="l", col="blue"))
+legend("topright", col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty=c(1,1))
+
 
 dev.off()
-
-
 

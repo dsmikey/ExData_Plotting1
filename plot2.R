@@ -13,17 +13,14 @@ epc2007$datetime <- strptime(paste(epc2007$Date,epc2007$Time), "%Y-%m-%d %H:%M:%
 plot_omit <- na.omit(epc2007)
 #plot_omitall <- na.omit(subset(epc2007,select=c(Global_active_power)))
 
+### Plot2.R produce plot2.png file
 
-# plot1.R produce plot1.png file
-
-png("plot1.png",width=480,height=480,units="px", pointsize=12, bg = "transparent")
+png("plot2.png",width=480,height=480,units="px", bg = "transparent")
 
 #par(mfrow=c(1,1))
 #par(oma=c(4,2,0,0))
 
-hist(plot_omit$Global_active_power, col="red",  main="Global Active Power", xlab="Global Active Power (kilowatts)" )
+with(plot_omit, plot(datetime, Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)"))
 
 dev.off()
-
-
 
